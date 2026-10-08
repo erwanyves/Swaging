@@ -1,0 +1,887 @@
+{
+  "_version": 1,
+  "_source": "modele sertissage.FCStd",
+  "_note": "Profil de sertissage extrait du modèle de référence. Les coordonnées sont celles du modèle (RayonInterSertissage = 15) ; la macro les translate radialement de (R_arête - rayon_reference).",
+  "varset": {
+    "label": "VarSetSertissage",
+    "groupe": "Base",
+    "parametres": [
+      {
+        "nom": "InnerRadius",
+        "type": "App::PropertyLength",
+        "defaut": 15.0,
+        "doc_cle": "varset.doc.inner_radius"
+      },
+      {
+        "nom": "SwagingRadius",
+        "type": "App::PropertyLength",
+        "defaut": 5.0,
+        "doc_cle": "varset.doc.swaging_radius"
+      },
+      {
+        "nom": "BaseThickness",
+        "type": "App::PropertyLength",
+        "defaut": 2.0,
+        "doc_cle": "varset.doc.base_thickness"
+      },
+      {
+        "nom": "HeadThickness",
+        "type": "App::PropertyLength",
+        "defaut": 1.0,
+        "doc_cle": "varset.doc.head_thickness"
+      },
+      {
+        "nom": "AxialOffset",
+        "type": "App::PropertyLength",
+        "defaut": 1.0,
+        "doc_cle": "varset.doc.axial_offset"
+      },
+      {
+        "nom": "LipLength",
+        "type": "App::PropertyLength",
+        "defaut": 6.0,
+        "doc_cle": "varset.doc.lip_length"
+      },
+      {
+        "nom": "SwagingAngle",
+        "type": "App::PropertyAngle",
+        "defaut": 30.0,
+        "doc_cle": "varset.doc.swaging_angle"
+      },
+      {
+        "nom": "UnswagedAngle",
+        "type": "App::PropertyAngle",
+        "defaut": 0.1,
+        "doc_cle": "varset.doc.unswaged_angle"
+      }
+    ]
+  },
+  "etat": {
+    "_note": "Deux representations de la meme piece. Mesure le 24/09/2026 : a 0 degre exactement le solveur ne proteste pas et le volume tombe de moitie (12665 -> 6888 mm3) ; l angle de repli ne peut donc pas etre nul. A 0,1 degre l ecart de volume est de 0,004 %.",
+    "parametre": {
+      "nom": "Swaged",
+      "type": "App::PropertyBool",
+      "defaut": true,
+      "doc_cle": "varset.doc.swaged"
+    },
+    "angle": "UnswagedAngle"
+  },
+  "sketch": {
+    "rayon_reference": 15.0,
+    "contrainte_rayon": "InnerRadius",
+    "geometries": [
+      {
+        "i": 0,
+        "type": "cercle",
+        "centre": [
+          10.0,
+          1.0
+        ],
+        "rayon": 5.0,
+        "construction": true
+      },
+      {
+        "i": 1,
+        "type": "arc",
+        "centre": [
+          10.0,
+          1.0
+        ],
+        "rayon": 5.0,
+        "debut": 0.0,
+        "fin": 0.5235987755982987,
+        "construction": false
+      },
+      {
+        "i": 2,
+        "type": "ligne",
+        "p1": [
+          14.330127018922195,
+          3.499999999999999
+        ],
+        "p2": [
+          12.8057906245846,
+          6.1402280828190605
+        ],
+        "construction": false
+      },
+      {
+        "i": 3,
+        "type": "ligne",
+        "p1": [
+          12.927799092512746,
+          6.595569884080541
+        ],
+        "p2": [
+          13.265403994657575,
+          6.790486165213595
+        ],
+        "construction": false
+      },
+      {
+        "i": 4,
+        "type": "ligne",
+        "p1": [
+          13.68523460672136,
+          6.718649975142304
+        ],
+        "p2": [
+          15.797459180956805,
+          4.2525841678528264
+        ],
+        "construction": false
+      },
+      {
+        "i": 5,
+        "type": "arc",
+        "centre": [
+          12.0,
+          1.0
+        ],
+        "rayon": 4.999999999999999,
+        "debut": 0.0,
+        "fin": 0.7082647377544417,
+        "construction": false
+      },
+      {
+        "i": 6,
+        "type": "ligne",
+        "p1": [
+          13.535533905932738,
+          4.535533905932738
+        ],
+        "p2": [
+          1.8e-15,
+          18.071067811865476
+        ],
+        "construction": true,
+        "ajustement": "p2_sur_axe_v"
+      },
+      {
+        "i": 7,
+        "type": "ligne",
+        "p1": [
+          10.0,
+          1.0
+        ],
+        "p2": [
+          13.535533905932738,
+          4.535533905932738
+        ],
+        "construction": true
+      },
+      {
+        "i": 8,
+        "type": "ligne",
+        "p1": [
+          14.330127018922195,
+          3.499999999999999
+        ],
+        "p2": [
+          10.0,
+          1.0
+        ],
+        "construction": true
+      },
+      {
+        "i": 9,
+        "type": "ligne",
+        "p1": [
+          15.0,
+          1.0
+        ],
+        "p2": [
+          17.0,
+          1.0
+        ],
+        "construction": true
+      },
+      {
+        "i": 10,
+        "type": "arc",
+        "centre": [
+          13.094465759179412,
+          6.3068947494857275
+        ],
+        "rayon": 0.3333333333333333,
+        "debut": 2.0943951023931957,
+        "fin": 3.665191429188092,
+        "construction": true
+      },
+      {
+        "i": 11,
+        "type": "point",
+        "p": [
+          12.63912395791794,
+          6.428903217413859
+        ],
+        "construction": true
+      },
+      {
+        "i": 12,
+        "type": "ligne",
+        "p1": [
+          12.927799092512746,
+          6.595569884080541
+        ],
+        "p2": [
+          12.8057906245846,
+          6.1402280828190605
+        ],
+        "construction": false
+      },
+      {
+        "i": 13,
+        "type": "arc",
+        "centre": [
+          13.432070661324241,
+          6.501811030618782
+        ],
+        "rayon": 0.3333333333333333,
+        "debut": 0.7082647377544424,
+        "fin": 2.0943951023931926,
+        "construction": true
+      },
+      {
+        "i": 14,
+        "type": "point",
+        "p": [
+          13.505149361702381,
+          6.928903217413855
+        ],
+        "construction": true
+      },
+      {
+        "i": 15,
+        "type": "ligne",
+        "p1": [
+          13.68523460672136,
+          6.718649975142304
+        ],
+        "p2": [
+          13.265403994657575,
+          6.790486165213595
+        ],
+        "construction": false
+      },
+      {
+        "i": 16,
+        "type": "ligne",
+        "p1": [
+          10.0,
+          1.0
+        ],
+        "p2": [
+          12.0,
+          1.0
+        ],
+        "construction": true
+      },
+      {
+        "i": 17,
+        "type": "ligne",
+        "p1": [
+          17.0,
+          1.0
+        ],
+        "p2": [
+          17.0,
+          0.0
+        ],
+        "construction": false
+      },
+      {
+        "i": 18,
+        "type": "ligne",
+        "p1": [
+          17.0,
+          0.0
+        ],
+        "p2": [
+          15.0,
+          0.0
+        ],
+        "construction": false
+      },
+      {
+        "i": 19,
+        "type": "ligne",
+        "p1": [
+          15.0,
+          0.0
+        ],
+        "p2": [
+          15.0,
+          1.0
+        ],
+        "construction": false
+      },
+      {
+        "i": 20,
+        "type": "ligne",
+        "p1": [
+          12.0,
+          1.0
+        ],
+        "p2": [
+          15.0,
+          1.0
+        ],
+        "construction": true
+      }
+    ],
+    "contraintes": [
+      {
+        "i": 0,
+        "type": "Coincident",
+        "args": [
+          1,
+          3,
+          0,
+          3
+        ]
+      },
+      {
+        "i": 1,
+        "type": "Tangent",
+        "args": [
+          1,
+          2,
+          2,
+          1
+        ]
+      },
+      {
+        "i": 2,
+        "type": "Tangent",
+        "args": [
+          4,
+          2,
+          5,
+          2
+        ]
+      },
+      {
+        "i": 3,
+        "type": "Tangent",
+        "args": [
+          6,
+          1,
+          0
+        ]
+      },
+      {
+        "i": 4,
+        "type": "Perpendicular",
+        "args": [
+          3,
+          2
+        ]
+      },
+      {
+        "i": 5,
+        "type": "DistanceX",
+        "args": [
+          1,
+          1,
+          5,
+          1
+        ],
+        "valeur": 2.0,
+        "nom": "BaseThickness"
+      },
+      {
+        "i": 6,
+        "type": "Distance",
+        "args": [
+          11,
+          1,
+          14,
+          1
+        ],
+        "valeur": 1.0,
+        "nom": "HeadThickness"
+      },
+      {
+        "i": 7,
+        "type": "Distance",
+        "args": [
+          2,
+          1,
+          11,
+          1
+        ],
+        "valeur": 3.3820061220085056,
+        "nom": "StraightLipLength"
+      },
+      {
+        "i": 8,
+        "type": "Distance",
+        "args": [
+          1,
+          1,
+          -2
+        ],
+        "valeur": 15.0,
+        "nom": "InnerRadius"
+      },
+      {
+        "i": 9,
+        "type": "Coincident",
+        "args": [
+          7,
+          1,
+          0,
+          3
+        ]
+      },
+      {
+        "i": 10,
+        "type": "Coincident",
+        "args": [
+          7,
+          2,
+          6,
+          1
+        ]
+      },
+      {
+        "i": 11,
+        "type": "Coincident",
+        "args": [
+          8,
+          1,
+          1,
+          2
+        ]
+      },
+      {
+        "i": 12,
+        "type": "Coincident",
+        "args": [
+          8,
+          2,
+          0,
+          3
+        ]
+      },
+      {
+        "i": 13,
+        "type": "Angle",
+        "args": [
+          -2,
+          2,
+          6,
+          2
+        ],
+        "valeur": 0.7853981633974483,
+        "nom": "MaxSwagingAngle"
+      },
+      {
+        "i": 14,
+        "type": "Coincident",
+        "args": [
+          9,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "i": 15,
+        "type": "Coincident",
+        "args": [
+          9,
+          2,
+          5,
+          1
+        ]
+      },
+      {
+        "i": 16,
+        "type": "PointOnObject",
+        "args": [
+          11,
+          1,
+          3
+        ]
+      },
+      {
+        "i": 17,
+        "type": "PointOnObject",
+        "args": [
+          11,
+          1,
+          2
+        ]
+      },
+      {
+        "i": 18,
+        "type": "Tangent",
+        "args": [
+          3,
+          1,
+          10,
+          1
+        ]
+      },
+      {
+        "i": 19,
+        "type": "Tangent",
+        "args": [
+          2,
+          2,
+          10,
+          2
+        ]
+      },
+      {
+        "i": 20,
+        "type": "Coincident",
+        "args": [
+          12,
+          1,
+          3,
+          1
+        ]
+      },
+      {
+        "i": 21,
+        "type": "Coincident",
+        "args": [
+          12,
+          2,
+          2,
+          2
+        ]
+      },
+      {
+        "i": 22,
+        "type": "PointOnObject",
+        "args": [
+          14,
+          1,
+          3
+        ]
+      },
+      {
+        "i": 23,
+        "type": "PointOnObject",
+        "args": [
+          14,
+          1,
+          4
+        ]
+      },
+      {
+        "i": 24,
+        "type": "Tangent",
+        "args": [
+          3,
+          2,
+          13,
+          2
+        ]
+      },
+      {
+        "i": 25,
+        "type": "Tangent",
+        "args": [
+          4,
+          1,
+          13,
+          1
+        ]
+      },
+      {
+        "i": 26,
+        "type": "Coincident",
+        "args": [
+          15,
+          2,
+          3,
+          2
+        ]
+      },
+      {
+        "i": 27,
+        "type": "Coincident",
+        "args": [
+          15,
+          1,
+          4,
+          1
+        ]
+      },
+      {
+        "i": 28,
+        "type": "Equal",
+        "args": [
+          13,
+          10
+        ]
+      },
+      {
+        "i": 29,
+        "type": "Radius",
+        "args": [
+          13
+        ],
+        "valeur": 0.3333333333333333,
+        "nom": "HeadChamfer"
+      },
+      {
+        "i": 30,
+        "type": "Coincident",
+        "args": [
+          16,
+          1,
+          0,
+          3
+        ]
+      },
+      {
+        "i": 31,
+        "type": "Coincident",
+        "args": [
+          16,
+          2,
+          5,
+          3
+        ]
+      },
+      {
+        "i": 32,
+        "type": "Equal",
+        "args": [
+          16,
+          9
+        ]
+      },
+      {
+        "i": 33,
+        "type": "Radius",
+        "args": [
+          1
+        ],
+        "valeur": 5.0,
+        "nom": "SwagingRadius"
+      },
+      {
+        "i": 34,
+        "type": "Coincident",
+        "args": [
+          17,
+          1,
+          5,
+          1
+        ]
+      },
+      {
+        "i": 35,
+        "type": "PointOnObject",
+        "args": [
+          17,
+          2,
+          -1
+        ]
+      },
+      {
+        "i": 36,
+        "type": "Vertical",
+        "args": [
+          17
+        ]
+      },
+      {
+        "i": 37,
+        "type": "Coincident",
+        "args": [
+          18,
+          1,
+          17,
+          2
+        ]
+      },
+      {
+        "i": 38,
+        "type": "PointOnObject",
+        "args": [
+          18,
+          2,
+          -1
+        ]
+      },
+      {
+        "i": 39,
+        "type": "Coincident",
+        "args": [
+          19,
+          1,
+          18,
+          2
+        ]
+      },
+      {
+        "i": 40,
+        "type": "Coincident",
+        "args": [
+          19,
+          2,
+          1,
+          1
+        ]
+      },
+      {
+        "i": 41,
+        "type": "Vertical",
+        "args": [
+          19
+        ]
+      },
+      {
+        "i": 42,
+        "type": "Distance",
+        "args": [
+          17,
+          1,
+          17,
+          2
+        ],
+        "valeur": 1.0,
+        "nom": "AxialOffset"
+      },
+      {
+        "i": 43,
+        "type": "Horizontal",
+        "args": [
+          9
+        ]
+      },
+      {
+        "i": 44,
+        "type": "PointOnObject",
+        "args": [
+          0,
+          3,
+          9
+        ]
+      },
+      {
+        "i": 45,
+        "type": "Horizontal",
+        "args": [
+          16
+        ]
+      },
+      {
+        "i": 46,
+        "type": "Equal",
+        "args": [
+          0,
+          1
+        ]
+      },
+      {
+        "i": 47,
+        "type": "PointOnObject",
+        "args": [
+          6,
+          2,
+          -2
+        ]
+      },
+      {
+        "i": 48,
+        "type": "Coincident",
+        "args": [
+          20,
+          2,
+          1,
+          1
+        ]
+      },
+      {
+        "i": 49,
+        "type": "Coincident",
+        "args": [
+          5,
+          3,
+          20,
+          1
+        ]
+      },
+      {
+        "i": 50,
+        "type": "Distance",
+        "args": [
+          1
+        ],
+        "valeur": 2.617993877991494,
+        "pilotante": false
+      },
+      {
+        "i": 51,
+        "type": "Angle",
+        "args": [
+          16,
+          1,
+          8,
+          2
+        ],
+        "valeur": 0.5235987755982988,
+        "nom": "SwagingAngle"
+      }
+    ],
+    "expressions": [
+      {
+        "chemin": ".Constraints.HeadChamfer",
+        "expression": ".Constraints.HeadThickness / 3"
+      },
+      {
+        "chemin": ".Constraints.BaseThickness",
+        "expression": "{VARSET}.BaseThickness"
+      },
+      {
+        "chemin": ".Constraints.HeadThickness",
+        "expression": "{VARSET}.HeadThickness"
+      },
+      {
+        "chemin": ".Constraints.AxialOffset",
+        "expression": "{VARSET}.AxialOffset"
+      },
+      {
+        "chemin": ".Constraints.InnerRadius",
+        "expression": "{VARSET}.InnerRadius"
+      },
+      {
+        "chemin": ".Constraints.SwagingRadius",
+        "expression": "{VARSET}.SwagingRadius"
+      },
+      {
+        "chemin": ".Constraints.SwagingAngle",
+        "expression": "{VARSET}.Swaged ? {VARSET}.SwagingAngle : {VARSET}.UnswagedAngle"
+      },
+      {
+        "chemin": ".Constraints.StraightLipLength",
+        "expression": "{VARSET}.LipLength - 2 * pi * {VARSET}.SwagingRadius / 360 ° * .Constraints.SwagingAngle"
+      }
+    ]
+  },
+  "revolution": {
+    "angle": 360.0,
+    "reversed": true,
+    "axe": "V_Axis"
+  },
+  "migration": {
+    "_note": "Liste BLANCHE des expressions qu une mise a niveau a le droit de reecrire, et des formes anterieures qu elle reconnait. Une expression absente de cette table, ou retouchee a la main, n est jamais touchee.",
+    "expressions_anterieures": {
+      ".Constraints.SwagingAngle": [
+        "{VARSET}.SwagingAngle"
+      ],
+      ".Constraints.StraightLipLength": [
+        "{VARSET}.LipLength - 2 * pi * {VARSET}.SwagingRadius / 360 ° * {VARSET}.SwagingAngle"
+      ]
+    }
+  }
+}

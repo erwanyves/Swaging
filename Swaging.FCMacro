@@ -1,0 +1,82 @@
+# -*- coding: utf-8 -*-
+# Chemin : Swaging.FCMacro
+# Auteur  : Yves Guillou
+# Licence : LGPL
+# Date    : 09-2026
+"""Swaging — crée un sertissage paramétrique sur une arête circulaire.
+
+Placer ce fichier dans le répertoire Macro de FreeCAD ; le dossier
+`Swaging/` doit se trouver dans le même répertoire (même convention que
+SmartFinder, ORing, SpringFull et StandardPartSelector).
+
+L'arête sélectionnée définit l'axe d'insertion (Z) et le rayon intérieur du
+sertissage. L'esquisse du profil est ajoutée dans le corps qui porte cette
+arête, attachée à elle, puis révolutionnée de 360° autour de cet axe. Tous
+les paramètres restent modifiables ensuite dans le VarSet créé.
+
+Usage : sélectionner une arête circulaire puis lancer la macro. Si rien n'est
+sélectionné, la macro demande le clic — la vue 3D reste utilisable.
+"""
+
+__version__ = "1.0"
+
+import os
+import sys
+
+import FreeCAD
+
+_NOM_DOSSIER = 'Swaging'
+_NOM_PAQUET = 'swg'
+
+
+def _dossier_modules():
+    """Dossier `Swaging/` contenant les modules et les données."""
+    base = None
+    try:
+        base = FreeCAD.getUserMacroDir(True)
+    except Exception:
+        base = None
+    if not base:
+        try:
+            base = os.path.dirname(os.path.abspath(__file__))
+        except NameError:
+            base = os.getcwd()
+    return os.path.join(base, _NOM_DOSSIER)
+
+
+def _preparer_import(dossier):
+    """Place le dossier en tête de `sys.path` et purge le paquet du cache.
+
+    Toujours replacer le dossier en TÊTE (retrait puis insertion), pas
+    seulement l'ajouter s'il est absent : les autres macros du même dossier
+    Macro font la même manœuvre, et le cache `sys.modules` est indexé par nom
+    et non par chemin. Le paquet est ici nommé `swg` — délibérément non
+    générique, contrairement à `modules`/`i18n`/`config` — ce qui écarte déjà
+    la collision, mais la discipline reste la même que dans les autres macros.
+
+    La purge du paquet permet de relire les modules à chaque lancement, sans
+    redémarrer FreeCAD pendant la mise au point.
+    """
+    if dossier in sys.path:
+        sys.path.remove(dossier)
+    sys.path.insert(0, dossier)
+    prefixe = _NOM_PAQUET + '.'
+    for nom in [n for n in list(sys.modules)
+                if n == _NOM_PAQUET or n.startswith(prefixe)]:
+        sys.modules.pop(nom, None)
+
+
+def main():
+    dossier = _dossier_modules()
+    if not os.path.isdir(dossier):
+        FreeCAD.Console.PrintError(
+            'Swaging : dossier introuvable -> %s\n'
+            'Vérifiez que le dossier %s/ est bien placé dans votre '
+            'répertoire Macro.\n' % (dossier, _NOM_DOSSIER))
+        return None
+    _preparer_import(dossier)
+    from swg import dialogue
+    return dialogue.lancer()
+
+
+main()
