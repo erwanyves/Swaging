@@ -707,6 +707,15 @@ def creer_varset(body, data, rayon_arete, label,
         varset.addProperty(descripteur['type'], descripteur['nom'], groupe,
                            i18n.tr(descripteur['doc_cle']))
         setattr(varset, descripteur['nom'], float(descripteur['defaut']))
+    # L'état serti / non serti : l'expression d'angle de l'esquisse le LIT
+    # dès la création. BUGFIX (12/10/2026, signalé par l'utilisateur) : le
+    # 24/09 il n'avait été posé que par `mettre_a_niveau_etat()` — tout
+    # sertissage NEUF échouait en « Property 'Swaged' not found ». Même motif
+    # que la mise à niveau : type et défaut lus dans le JSON.
+    for descripteur in parametres_etat(data):
+        varset.addProperty(descripteur['type'], descripteur['nom'], groupe,
+                           i18n.tr(descripteur['doc_cle']))
+        setattr(varset, descripteur['nom'], bool(descripteur['defaut']))
     # Le rayon : gravé, ou PILOTÉ par un paramètre nommé du document.
     # C'était la seule valeur gravée de toute la chaîne — tout l'aval
     # (contrainte `InnerRadius`, esquisse, révolution) suit déjà cette
